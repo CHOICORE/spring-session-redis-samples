@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>홈페이지</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .container {
+            width: 90%;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .welcome-message {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .nav-links {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .nav-links a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: #333;
+        }
+
+        .nav-links a:hover {
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="welcome-message">
+        <h1>{{title}}</h1>
+        <p>{{message}}</p>
+    </div>
+
+    <div class="nav-links">
+        <a href="/implicit">Implicit Grant</a>
+        {{#isLoggedIn}}
+            <a href="/dashboard">대시보드</a>
+            <a href="/logout">로그아웃</a>
+        {{/isLoggedIn}}
+        {{^isLoggedIn}}
+            <a href="/login">로그인</a>
+            <a href="/signup">회원가입</a>
+        {{/isLoggedIn}}
+    </div>
+</div>
+</body>
+</html>
