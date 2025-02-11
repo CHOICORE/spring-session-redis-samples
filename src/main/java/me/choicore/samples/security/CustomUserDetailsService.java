@@ -17,6 +17,6 @@ public class CustomUserDetailsService implements UserDetailsService {
                 .roles("USER")
                 .build();
 
-        return new CustomUserDetails((User) userDetails);
+        return new CustomUserDetails((User) userDetails, "홍길동");
     }
 }

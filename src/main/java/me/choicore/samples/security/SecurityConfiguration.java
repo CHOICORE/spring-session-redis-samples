@@ -17,9 +17,11 @@ public class SecurityConfiguration {
                 .httpBasic(AbstractHttpConfigurer::disable)
                 .csrf(AbstractHttpConfigurer::disable)
                 .formLogin(Customizer.withDefaults())
-                .authorizeHttpRequests(authorizeRequests -> authorizeRequests
-                        .requestMatchers("/implicit").permitAll()
-                        .anyRequest().authenticated())
+                .authorizeHttpRequests(authorize ->
+                        authorize
+                                .requestMatchers("/implicit")
+                                .permitAll()
+                                .anyRequest().authenticated())
                 .exceptionHandling(Customizer.withDefaults())
         ;
 

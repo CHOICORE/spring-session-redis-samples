@@ -7,6 +7,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
@@ -43,11 +44,11 @@ public class HomeController {
     }
 
     @GetMapping("/")
-    public String home(Model model) {
-        model.addAttribute("title", "환영합니다");
-        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        model.addAttribute("message", principal);
-        model.addAttribute("isLoggedIn", false); // 또는 true
+    public String home(Model model, @AuthenticationPrincipal CustomUserDetails customUserDetails) {
+        model.addAttribute("message", "환영합니다");
+        log.info("Logged in user details: {}", customUserDetails);
+        model.addAttribute("user", customUserDetails);
+        model.addAttribute("isLoggedIn", true);
         return "index";
     }
 }

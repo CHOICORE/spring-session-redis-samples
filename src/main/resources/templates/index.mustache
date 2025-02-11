@@ -36,12 +36,10 @@
 <body>
 <div class="container">
     <div class="welcome-message">
-        <h1>{{title}}</h1>
-        <p>{{message}}</p>
+        <h1>{{user.name}}님 {{message}}</h1>
     </div>
 
     <div class="nav-links">
-        <a href="/implicit">Implicit Grant</a>
         {{#isLoggedIn}}
             <a href="/dashboard">대시보드</a>
             <a href="/logout">로그아웃</a>

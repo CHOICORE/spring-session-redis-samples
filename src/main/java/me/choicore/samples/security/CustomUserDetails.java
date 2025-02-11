@@ -21,10 +21,12 @@ import java.util.Collection;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class CustomUserDetails implements UserDetails, CredentialsContainer {
     private User delegate;
+    private String name;
     private boolean custom;
 
-    public CustomUserDetails(User user) {
+    public CustomUserDetails(User user, String name) {
         this.delegate = user;
+        this.name = name;
         this.custom = true;
     }
 
